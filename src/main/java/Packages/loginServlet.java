@@ -62,7 +62,8 @@ public class loginServlet extends HttpServlet {
         
         try (Connection conn = connectDb.getConnection()){
             //query the database for the student
-            String sql = "SELECT name, password FROM users WHERE student_number = ?";
+            // *** MODIFIED: Added 'surname' to the SELECT statement ***
+            String sql = "SELECT name, surname, password FROM users WHERE student_number = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, studentNumber);
             ResultSet rs = ps.executeQuery();
@@ -70,15 +71,17 @@ public class loginServlet extends HttpServlet {
             if (rs.next()){
                 String storedPassword = rs.getString("password");
                 String studentName = rs.getString("name");
+                String studentSurname = rs.getString("surname"); // *** NEW: Get surname from database ***
                 
                 //call hash here
                 //String hashedInputPassword = hashPassword(password);
                 
                 if (storedPassword.equals(password)){
-                   HttpSession session = request.getSession();
-                   session.setAttribute("studentNumber", studentNumber);
-                   session.setAttribute("studentName", studentName);
-                   response.sendRedirect("dash.jsp");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("studentNumber", studentNumber);
+                    session.setAttribute("studentName", studentName);
+                    session.setAttribute("studentSurname", studentSurname); // *** NEW: Set surname in session ***
+                    response.sendRedirect("dash.jsp");
                 }else{
                     request.setAttribute("error", "Incorrect Password.");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -96,10 +99,10 @@ public class loginServlet extends HttpServlet {
         
     }
     
-      //put hash here like registration
+     //put hash here like registration
 
     
-  // Handles POST requests from login.jsp
+ // Handles POST requests from login.jsp
 @Override
 protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -119,7 +122,4 @@ public String getServletInfo() {
     return "Handles student login authentication";
 }
 
- 
-
 }
-
