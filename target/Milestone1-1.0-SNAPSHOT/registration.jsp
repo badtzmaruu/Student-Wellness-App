@@ -37,7 +37,7 @@
             try {
                 Class.forName("org.postgresql.Driver");
                java.sql.Connection conn = java.sql.DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+                "jdbc:postgresql://localhost:5432/postgres", "postgres", "Giepie20040402");
                 java.sql.PreparedStatement check = conn.prepareStatement("SELECT * FROM users WHERE email = ? OR student_number = ?");
                 check.setString(1, email);
                 check.setInt(2, Integer.parseInt(studentNumber));
@@ -55,7 +55,7 @@
                     insert.setString(3, surname);
                     insert.setString(4, email);
                     insert.setString(5, phone);
-                    insert.setString(6, password); 
+                    insert.setString(6, password);
 
                     int result = insert.executeUpdate();
                     if (result > 0) {
