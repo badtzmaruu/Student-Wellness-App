@@ -1,4 +1,3 @@
-com\mycompany\milestone1\JakartaRestConfiguration.class
 Packages\registerServlet.class
 Packages\connectDb.class
-com\mycompany\milestone1\resources\JakartaEE10Resource.class
+Packages\logInServlet.class
