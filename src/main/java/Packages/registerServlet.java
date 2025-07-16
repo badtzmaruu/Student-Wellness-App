@@ -25,7 +25,7 @@ public class registerServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1) Read & basic‐validate inputs
+        //Read & basic‐validate inputs
         String snStr  = request.getParameter("student_number");
         String name   = request.getParameter("name");
         String surname= request.getParameter("surname");
@@ -42,21 +42,21 @@ public class registerServlet extends HttpServlet {
                 email.isBlank()|| phone.isBlank()  || pwd.isBlank()) {
             error = "All fields are required.";
         } else {
-            // parse student number
+            //parse student number
             try {
                 studentNumber = Integer.parseInt(snStr);
             } catch (NumberFormatException e) {
                 error = "Student number must be a valid number.";
             }
-            // email format
+            //email format
             if (error==null && !email.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$")) {
                 error = "Invalid email format.";
             }
-            // phone digits
+            //phone digits
             if (error==null && !phone.matches("\\d{10}")) {
                 error = "Phone number must be exactly 10 digits.";
             }
-            // password length
+            //password length
             if (error==null && pwd.length()<6) {
                 error = "Password must be at least 6 characters.";
             }
@@ -69,10 +69,10 @@ public class registerServlet extends HttpServlet {
             return;
         }
 
-        // 2) Hash the password
+        //Hash the password
         String hashed = hashPassword(pwd);
 
-        // 3) Check duplicates & insert
+        //Check duplicates & insert
         String checkSql  = "SELECT 1 FROM users WHERE email = ? OR student_number = ?";
         String insertSql = "INSERT INTO users "
                 + "(student_number,name,surname,email,phone,password_hash) "
@@ -94,7 +94,7 @@ public class registerServlet extends HttpServlet {
                 }
             }
 
-            // bind insert params
+            //bind insert params
             insertStmt.setInt   (1, studentNumber);
             insertStmt.setString(2, name);
             insertStmt.setString(3, surname);
@@ -122,10 +122,8 @@ public class registerServlet extends HttpServlet {
         }
     }
 
-    // ----------------------------------------------------------------
-    // BCrypt password hashing
+    //BCrypt password hashing
     private String hashPassword(String password) {
-        // 12 rounds is a good default work factor
         return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
 }
