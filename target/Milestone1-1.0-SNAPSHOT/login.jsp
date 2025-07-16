@@ -46,7 +46,7 @@
             <p class="message"><%= successMessage %></p>
         <% } %>
 
-        <form name="login" action="logInServlet" method="POST">
+        <form name="login" action="/logInServlet" method="POST">
             Email: <input type="text" name="txtUsername" value="<%= oldUsername %>" size="50" /><br/>
             Password: <input type="password" name="txtPassword" value="" size="50" /><br/>
             <input type="submit" value="Log In" name="btnLogIn" />

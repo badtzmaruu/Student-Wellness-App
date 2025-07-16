@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+//
+
 @WebServlet (name = "logInServlet", urlPatterns = {"/logInServlet"})
 public class logInServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -61,7 +63,7 @@ public class logInServlet extends HttpServlet {
                     session.setAttribute("loggedInUserEmail", username);
                     session.setAttribute("loggedInStudentNumber", studentNumber);
                     
-                    response.sendRedirect("dash.jsp"); 
+                    response.sendRedirect("dashServlet"); 
                     return;
                 }else {
                     error = "Invalid email or password.";
