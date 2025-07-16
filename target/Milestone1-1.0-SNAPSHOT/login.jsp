@@ -22,16 +22,16 @@
         <%
             String errorMessage = null;
             String successMessage = null;
-            String oldUsername = ""; 
+            String oldStudentNumber = ""; 
             
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 errorMessage = (String) request.getAttribute("error");
                 successMessage = (String) request.getAttribute("message"); 
-                oldUsername = (String) request.getAttribute("username"); 
+                oldStudentNumber = (String) request.getAttribute("student_number"); 
 
                
-                if (oldUsername == null) {
-                    oldUsername = ""; 
+                if (oldStudentNumber == null) {
+                    oldStudentNumber = ""; 
                 }
             }
         %>
@@ -46,10 +46,11 @@
             <p class="message"><%= successMessage %></p>
         <% } %>
 
-        <form name="login" action="/logInServlet" method="POST">
-            Email: <input type="text" name="txtUsername" value="<%= oldUsername %>" size="50" /><br/>
-            Password: <input type="password" name="txtPassword" value="" size="50" /><br/>
+        <form name="login" action="loginServlet" method="POST">
+            Student Number: <input type="text" name="student_number" value="<%= oldStudentNumber %>" size="50" /><br/>
+            Password: <input type="password" name="password" value="" size="50" /><br/>
             <input type="submit" value="Log In" name="btnLogIn" />
+            
         </form>
 
         <p>Don't have an account? <a href="registration.jsp">Register Here</a></p>

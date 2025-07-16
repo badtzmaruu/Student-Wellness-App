@@ -1,4 +1,5 @@
-Packages\dashServlet.class
+com\mycompany\milestone1\JakartaRestConfiguration.class
 Packages\registerServlet.class
 Packages\connectDb.class
-Packages\logInServlet.class
+Packages\loginServlet.class
+com\mycompany\milestone1\resources\JakartaEE10Resource.class
