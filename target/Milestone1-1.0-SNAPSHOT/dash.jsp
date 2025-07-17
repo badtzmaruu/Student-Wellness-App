@@ -4,9 +4,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dashboard Page</title>
+        <link rel="stylesheet" href="./styles.css"/> 
+
+        <title>Dashboard</title>
+
     </head>
     <body>
+        <div class="container">
         <%
             String userName = (String) session.getAttribute("loggedInUserName");
             String userSurname = (String) session.getAttribute("loggedInUserSurname");
@@ -26,6 +30,7 @@
                 return; 
             }
         %>
+           
 
         <p>This is your personalized dashboard content.</p>
         <p>You can add more dashboard features here.</p>
@@ -35,6 +40,6 @@
         <% } %>
 
         <p><a href="logoutServlet">Log Out</a></p>
-
+           </div>
     </body>
 </html>
