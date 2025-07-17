@@ -6,13 +6,15 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+        <link rel="stylesheet" href="./styles.css"/> 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registration Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="container">
+        <h1>Welcome!</h1>
         <%
     String message = "", error = "";
 
@@ -73,27 +75,20 @@
 %>
 
 <form method="post" action="registerServlet">
-    Student Number: <input type="text" name="student_number"><br/>
-    Name: <input type="text" name="name"><br/>
-    Surname: <input type="text" name="surname"><br/>
-    Email: <input type="text" name="email"><br/>
-    Phone: <input type="text" name="phone"><br/>
-    Password: <input type="password" name="password"><br/>
+    <div class="form-group">Student Number: <input type="text" name="student_number"><br/></div>
+    <div class="form-group">Name: <input type="text" name="name"><br/></div>
+    <div class="form-group">Surname: <input type="text" name="surname"><br/></div>
+    <div class="form-group">Email: <input type="text" name="email"><br/></div>
+    <div class="form-group">Phone: <input type="text" name="phone"><br/></div>
+    <div class="form-group">Password: <input type="password" name="password"><br/></div>
     <input type="submit" value="Register">
 </form>
 
+<p>Already have an account? <a href="login.jsp">Log in</a></p>
+
 <p class="error"><%= error %></p>
 <p class="success"><%= message %></p>
-
-
-    <%-- Show error or success message --%>
-    <p class="error">
-        <%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>
-    </p>
-    <p class="success">
-        <%= request.getAttribute("message") != null ? request.getAttribute("message") : "" %>
-    </p>
         </div>
-        </div>
+        
     </body>
 </html>
