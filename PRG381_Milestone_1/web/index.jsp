@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student Wellness App</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
         
