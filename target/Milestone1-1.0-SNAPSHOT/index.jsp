@@ -6,14 +6,18 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+        <link rel="stylesheet" href="./styles.css"/>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dashboard navigation</title>
     </head>
+    <div class="container">
     <body>
         <h1>Login to dashboard</h1>
-        <a href="./login.jsp" target="_blank"><p>Login</p></a>
-        <a href="./registration.jsp" target="_blank"><p>Sign Up</p></a>
+        <a href="./login.jsp" class="button-link" target="_blank"><p>Login</p></a>
+        <a href="./registration.jsp" class="button-link" target="_blank"><p>Sign Up</p></a>
+        </div>
     </body>
 </html>
