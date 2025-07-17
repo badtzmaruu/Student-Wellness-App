@@ -1,31 +1,40 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dashboard</title>
+        <title>Dashboard Page</title>
     </head>
     <body>
         <%
-            // Retrieve data from session
-            String studentName = (String) session.getAttribute("studentName");
-            String studentSurname = (String) session.getAttribute("studentSurname");
-            
-            // Basic check if session attributes exist (user is logged in)
-            if (studentName != null && studentSurname != null) {
+            String userName = (String) session.getAttribute("loggedInUserName");
+            String userSurname = (String) session.getAttribute("loggedInUserSurname");
+            String userEmail = (String) session.getAttribute("loggedInUserEmail");
+
+            if (userName != null && !userName.isEmpty() && userSurname != null && !userSurname.isEmpty()) {
         %>
-                <h1>Welcome, <%= studentName %> <%= studentSurname %>!</h1>
-                <p>This is your personalized dashboard.</p>
+            <h1>Welcome <%= userName %> <%= userSurname %>!</h1>
+        <%
+            } else if (userEmail != null && !userEmail.isEmpty()) {
                 
-                <%-- Logout Button --%>
-                <form action="dashServlet" method="post">
-                    <input type="submit" value="Logout">
-                </form>
+        %>
+            <h1>Welcome <%= userEmail %>!</h1>
         <%
             } else {
-                // If session attributes are not found, redirect to login page
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("login.jsp?message=Please log in to access the dashboard.");
+                return; 
             }
         %>
+
+        <p>This is your personalized dashboard content.</p>
+        <p>You can add more dashboard features here.</p>
+
+        <% if (session.getAttribute("loggedInStudentNumber") != null) { %>
+            <p>Your Student Number: <%= session.getAttribute("loggedInStudentNumber") %></p>
+        <% } %>
+
+        <p><a href="logoutServlet">Log Out</a></p>
+
     </body>
 </html>
