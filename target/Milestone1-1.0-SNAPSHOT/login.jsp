@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+       <link rel="stylesheet" href="./styles.css"/>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,6 +19,7 @@
         </style>
     </head>
     <body>
+        <div class="container">
         <h1>Welcome Back!</h1>
 
         <%
@@ -49,12 +52,17 @@
         <% } %>
 
         <form name="login" action="loginServlet" method="POST">
+            <div class="form-group">
             Email: <input type="text" name="txtUsername" value="<%= oldUsername %>" size="50" /><br/>
+            </div>
+            <div class="form-group">
             Password: <input type="password" name="txtPassword" value="" size="50" /><br/>
             <input type="submit" value="Log In" name="btnLogIn" />
+            </div>
         </form>
 
         <p>Don't have an account? <a href="registration.jsp">Register Here</a></p>
 
     </body>
+</div>
 </html>
