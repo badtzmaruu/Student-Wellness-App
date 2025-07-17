@@ -37,7 +37,7 @@
             try {
                 Class.forName("org.postgresql.Driver");
                java.sql.Connection conn = java.sql.DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+                "jdbc:postgresql://localhost:5432/postgres", "Jonathan", "J0n@than");
                 java.sql.PreparedStatement check = conn.prepareStatement("SELECT * FROM users WHERE email = ? OR student_number = ?");
                 check.setString(1, email);
                 check.setInt(2, Integer.parseInt(studentNumber));
@@ -72,7 +72,7 @@
     }
 %>
 
-<form method="post">
+<form method="post" action="registerServlet">
     Student Number: <input type="text" name="student_number"><br/>
     Name: <input type="text" name="name"><br/>
     Surname: <input type="text" name="surname"><br/>

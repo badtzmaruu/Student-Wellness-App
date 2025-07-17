@@ -15,8 +15,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 //
 
-@WebServlet (name = "logInServlet", urlPatterns = {"/logInServlet"})
-public class logInServlet extends HttpServlet {
+@WebServlet (name = "loginServlet", urlPatterns = {"/loginServlet"})
+public class loginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
@@ -73,7 +73,7 @@ public class logInServlet extends HttpServlet {
             }
         } catch(Exception e){
             e.printStackTrace();
-            error = "An error occurred during login. Please try again.";
+            error = "An error occurred during login. Please try again. " + e.getMessage();
         }finally {
             try { if (rs != null) rs.close(); } catch (Exception e) { e.printStackTrace(); }
             try { if (pstmt != null) pstmt.close(); } catch (Exception e) { e.printStackTrace(); }
@@ -85,4 +85,3 @@ public class logInServlet extends HttpServlet {
     }
    
 }
-
